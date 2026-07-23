@@ -6,7 +6,14 @@
 
 <title>Lakmi Handcrafts | Handmade Sri Lankan Crafts</title>
 
+<meta name="description" content="Lakmi Handcrafts creates beautiful handmade Sri Lankan crafts. Handmade gifts delivered across Sri Lanka and worldwide.">
+
 <style>
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -21,74 +28,126 @@ header {
 }
 
 .logo {
-    width: 180px;
+    width: 220px;
+    max-width: 90%;
 }
 
 nav {
     background: #5A2A00;
-    padding: 12px;
+    padding: 15px;
     text-align: center;
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    margin: 15px;
+    margin: 0 12px;
+    font-weight: bold;
 }
 
 .hero {
     text-align: center;
-    padding: 60px 20px;
+    padding: 70px 20px;
+    background: #F7E9D7;
 }
 
 .hero h1 {
-    font-size: 40px;
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 18px;
+    max-width: 700px;
+    margin: auto;
+    line-height: 1.6;
 }
 
 .button {
     display: inline-block;
+    margin-top: 25px;
     background: #B33000;
     color: white;
-    padding: 12px 25px;
-    border-radius: 5px;
+    padding: 14px 30px;
+    border-radius: 30px;
     text-decoration: none;
+    font-weight: bold;
 }
 
 .section {
-    padding: 40px 20px;
+    padding: 50px 20px;
     text-align: center;
+}
+
+.section h2 {
+    font-size: 32px;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .card {
     background: white;
-    padding: 20px;
-    margin: 15px auto;
-    max-width: 500px;
-    border-radius: 10px;
+    width: 280px;
+    padding: 25px;
+    border-radius: 15px;
+}
+
+.card h3 {
+    color: #B33000;
+}
+
+.contact {
+    background: white;
 }
 
 footer {
     background: #5A2A00;
     color: white;
     text-align: center;
-    padding: 20px;
+    padding: 25px;
 }
+
+@media(max-width:600px){
+
+.hero h1 {
+    font-size: 30px;
+}
+
+nav a {
+    display: inline-block;
+    margin: 8px;
+}
+
+}
+
 </style>
 
 </head>
 
 <body>
 
+
 <header>
+
 <img src="logo.png" class="logo" alt="Lakmi Handcrafts Logo">
+
 </header>
 
+
 <nav>
+
 <a href="#home">Home</a>
 <a href="#products">Products</a>
 <a href="#about">About</a>
 <a href="#contact">Contact</a>
+
 </nav>
+
 
 
 <section class="hero" id="home">
@@ -96,8 +155,8 @@ footer {
 <h1>Handcrafted with Love from Sri Lanka</h1>
 
 <p>
-Unique handmade creations from Lakmi Handcrafts,
-made with care and delivered worldwide.
+Discover unique handmade creations from Lakmi Handcrafts.
+Beautiful crafts made with care in Matale, Sri Lanka and delivered worldwide.
 </p>
 
 <a class="button" href="https://wa.me/94705334464">
@@ -107,68 +166,122 @@ Order on WhatsApp
 </section>
 
 
-<section class="section" id="products">
 
-<h2>Our Products</h2>
+<section class="section">
+
+<h2>Why Choose Lakmi Handcrafts?</h2>
+
+<div class="cards">
 
 <div class="card">
+<h3>Handmade Quality</h3>
 <p>
-Product collection coming soon.
+Every item is carefully crafted with attention to detail.
 </p>
+</div>
 
+
+<div class="card">
+<h3>Sri Lankan Craft</h3>
 <p>
-We will add handmade items, prices and photos here.
+Traditional creativity from the heart of Sri Lanka.
 </p>
+</div>
+
+
+<div class="card">
+<h3>Worldwide Delivery</h3>
+<p>
+We deliver locally and internationally.
+</p>
+</div>
+
 </div>
 
 </section>
 
 
-<section class="section" id="about">
 
-<h2>About Lakmi Handcrafts</h2>
+<section class="section" id="products">
+
+<h2>Our Handmade Products</h2>
+
+<div class="card">
+
+<h3>New Collection Coming Soon</h3>
 
 <p>
-Lakmi Handcrafts creates beautiful handmade products
-from Matale, Sri Lanka.
+Our beautiful handmade products will be displayed here.
 </p>
 
 <p>
-We deliver across Sri Lanka and internationally.
+Stay connected with Lakmi Handcrafts for new arrivals.
+</p>
+
+</div>
+
+</section>
+
+
+
+<section class="section" id="about">
+
+<h2>About Us</h2>
+
+<p>
+Lakmi Handcrafts creates unique handmade products from Matale, Sri Lanka.
+Our goal is to share Sri Lankan creativity with customers around the world.
 </p>
 
 </section>
 
 
-<section class="section" id="contact">
+
+<section class="section contact" id="contact">
 
 <h2>Contact Us</h2>
 
 <p>
-WhatsApp / Phone: 0705334464
+<strong>WhatsApp / Phone:</strong> 0705334464
 </p>
 
 <p>
-Email: lakmihandcrafts@gmail.com
+<strong>Email:</strong> lakmihandcrafts@gmail.com
 </p>
 
 <p>
-Address:
-132/1 Neluwakanda Alwatta,
+<strong>Address:</strong><br>
+132/1 Neluwakanda Alwatta<br>
 Matale, Sri Lanka
 </p>
 
 <p>
-Local delivery: Rs.450<br>
-International shipping: Depends on country
+<strong>Delivery:</strong><br>
+Sri Lanka & International
 </p>
+
+<p>
+<strong>Shipping:</strong><br>
+Local: Rs.450<br>
+International: Depends on country
+</p>
+
+
+<a class="button" href="https://wa.me/94705334464">
+Chat on WhatsApp
+</a>
 
 </section>
 
 
+
 <footer>
-© Lakmi Handcrafts - Handmade Sri Lankan Crafts
+
+© 2026 Lakmi Handcrafts<br>
+Handmade Sri Lankan Crafts
+
 </footer>
+
 
 </body>
 </html>
