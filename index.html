@@ -85,7 +85,7 @@
     <!-- Featured Hero Showcase Image -->
     <div class="relative">
       <div class="w-full h-80 sm:h-[420px] bg-amber-100/60 rounded-3xl overflow-hidden shadow-md border border-stone-200 relative">
-        <img src="card-peacock-box.jpg" alt="Lakmi Handcrafts Featured Product" class="w-full h-full object-cover">
+        <img src="card-peacock-box.jpg" alt="Lakmi Handcrafts Featured Product" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/600x400?text=Lakmi+Handcrafts'">
         <div class="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-md p-4 rounded-2xl border border-stone-200 shadow-sm">
           <p class="text-xs font-bold text-amber-900">Featured Creation</p>
           <p class="text-sm font-semibold text-stone-800">Peacock Card & Premium Presentation Box Set</p>
@@ -95,7 +95,7 @@
   </header>
 
   <!-- Sentiment Quote Section -->
-  <section class="max-w-4xl mx-auto my-8 mx-6 sm:mx-auto p-8 bg-amber-50/80 rounded-3xl border border-amber-200/70 text-center space-y-4 shadow-sm">
+  <section class="max-w-4xl my-8 mx-6 sm:mx-auto p-8 bg-amber-50/80 rounded-3xl border border-amber-200/70 text-center space-y-4 shadow-sm">
     <p class="text-xs uppercase tracking-widest text-amber-900 font-bold">A Message In Every Card</p>
     <blockquote class="text-lg md:text-2xl font-serif text-stone-800 italic leading-relaxed">
       “This little handmade creation carries warm wishes from the heart. May it remind you that kindness, love, and friendship always travel farther than distance.”
@@ -103,96 +103,19 @@
     <p class="text-xs font-bold tracking-widest text-amber-900 uppercase">AYUBOWAN!</p>
   </section>
 
-  <!-- Product Showcase Section -->
+  <!-- Dynamic Product Showcase Section (Loaded via Google Sheet) -->
   <section id="products" class="max-w-6xl mx-auto px-6 py-12">
     <div class="text-center space-y-2 mb-12">
-      <h2 class="text-3xl sm:text-4xl font-bold text-stone-900">Our Handcrafted Cards</h2>
-      <p class="text-stone-600">Click any item to order directly via WhatsApp.</p>
+      <h2 class="text-3xl sm:text-4xl font-bold text-stone-900 font-serif">Our Handcrafted Collection</h2>
+      <p class="text-stone-600">Real-time catalog from our studio. Click any item to order directly via WhatsApp.</p>
     </div>
 
-    <!-- Product Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-
-      <!-- Card 1: Raksha Mask -->
-      <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition border border-stone-200 flex flex-col justify-between">
-        <div>
-          <div class="h-72 bg-stone-100 overflow-hidden">
-            <img src="card-raksha.jpg" alt="Traditional Sri Lankan Raksha Mask Greeting Card" class="w-full h-full object-cover hover:scale-105 transition duration-300">
-          </div>
-          <div class="p-5 space-y-2">
-            <span class="text-xs font-bold text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded-full">Made with Love</span>
-            <h3 class="font-bold text-lg text-stone-900">Raksha Mask Cultural Card</h3>
-            <p class="text-xs text-stone-500">3D layered intricate traditional mask design on textured background.</p>
-          </div>
-        </div>
-        <div class="p-5 pt-0 flex items-center justify-between border-t border-stone-100 mt-4">
-          <span class="text-lg font-bold text-amber-900">Rs. 1,200</span>
-          <a href="https://wa.me/94705334464?text=Hi!%20I'd%20like%20to%20order%20the%20Raksha%20Mask%20Cultural%20Card%20(Rs.%201200)" target="_blank" class="bg-emerald-600 text-white px-3 py-2 rounded-xl text-xs font-semibold hover:bg-emerald-700 transition flex items-center gap-1">
-            <i class="fa-brands fa-whatsapp"></i> Order
-          </a>
-        </div>
+    <!-- Product Grid Container -->
+    <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="col-span-full text-center text-stone-500 py-12">
+        <i class="fa-solid fa-spinner fa-spin text-2xl text-amber-800 mb-2"></i>
+        <p>Loading catalog from Google Sheet...</p>
       </div>
-
-      <!-- Card 2: Lighthouse -->
-      <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition border border-stone-200 flex flex-col justify-between">
-        <div>
-          <div class="h-72 bg-stone-100 overflow-hidden">
-            <img src="card-lighthouse.jpg" alt="Island Wishes Lighthouse Card" class="w-full h-full object-cover hover:scale-105 transition duration-300">
-          </div>
-          <div class="p-5 space-y-2">
-            <span class="text-xs font-bold text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded-full">Island Wishes</span>
-            <h3 class="font-bold text-lg text-stone-900">Island Lighthouse Card</h3>
-            <p class="text-xs text-stone-500">Delicate lace cutout with tropical sunset background and gem accents.</p>
-          </div>
-        </div>
-        <div class="p-5 pt-0 flex items-center justify-between border-t border-stone-100 mt-4">
-          <span class="text-lg font-bold text-amber-900">Rs. 1,200</span>
-          <a href="https://wa.me/94705334464?text=Hi!%20I'd%20like%20to%20order%20the%20Island%20Lighthouse%20Card%20(Rs.%201200)" target="_blank" class="bg-emerald-600 text-white px-3 py-2 rounded-xl text-xs font-semibold hover:bg-emerald-700 transition flex items-center gap-1">
-            <i class="fa-brands fa-whatsapp"></i> Order
-          </a>
-        </div>
-      </div>
-
-      <!-- Card 3: Kandyan Dancer -->
-      <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition border border-stone-200 flex flex-col justify-between">
-        <div>
-          <div class="h-72 bg-stone-100 overflow-hidden">
-            <img src="card-dancer.jpg" alt="Traditional Sri Lankan Dancer Greeting Card" class="w-full h-full object-cover hover:scale-105 transition duration-300">
-          </div>
-          <div class="p-5 space-y-2">
-            <span class="text-xs font-bold text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded-full">Cultural Art</span>
-            <h3 class="font-bold text-lg text-stone-900">Kandyan Dancer Cultural Card</h3>
-            <p class="text-xs text-stone-500">Vibrant dancer art with intricate lace lattice borders and stone textures.</p>
-          </div>
-        </div>
-        <div class="p-5 pt-0 flex items-center justify-between border-t border-stone-100 mt-4">
-          <span class="text-lg font-bold text-amber-900">Rs. 1,200</span>
-          <a href="https://wa.me/94705334464?text=Hi!%20I'd%20like%20to%20order%20the%20Kandyan%20Dancer%20Cultural%20Card%20(Rs.%201200)" target="_blank" class="bg-emerald-600 text-white px-3 py-2 rounded-xl text-xs font-semibold hover:bg-emerald-700 transition flex items-center gap-1">
-            <i class="fa-brands fa-whatsapp"></i> Order
-          </a>
-        </div>
-      </div>
-
-      <!-- Card 4: Peacock Box Set -->
-      <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition border border-stone-200 flex flex-col justify-between">
-        <div>
-          <div class="h-72 bg-stone-100 overflow-hidden">
-            <img src="card-peacock-box.jpg" alt="Luxury Peacock Boxed Greeting Card" class="w-full h-full object-cover hover:scale-105 transition duration-300">
-          </div>
-          <div class="p-5 space-y-2">
-            <span class="text-xs font-bold text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded-full">Luxury Gift Box Set</span>
-            <h3 class="font-bold text-lg text-stone-900">Peacock Card & Presentation Box</h3>
-            <p class="text-xs text-stone-500">Includes handcrafted 3D peacock card, paper flowers, ribbon, and Ayubowan gift tag.</p>
-          </div>
-        </div>
-        <div class="p-5 pt-0 flex items-center justify-between border-t border-stone-100 mt-4">
-          <span class="text-lg font-bold text-amber-900">Rs. 2,500</span>
-          <a href="https://wa.me/94705334464?text=Hi!%20I'd%20like%20to%20order%20the%20Peacock%20Card%20%26%20Presentation%20Box%20(Rs.%202500)" target="_blank" class="bg-emerald-600 text-white px-3 py-2 rounded-xl text-xs font-semibold hover:bg-emerald-700 transition flex items-center gap-1">
-            <i class="fa-brands fa-whatsapp"></i> Order
-          </a>
-        </div>
-      </div>
-
     </div>
   </section>
 
@@ -257,9 +180,94 @@
     </div>
 
     <div class="max-w-6xl mx-auto border-t border-stone-800 mt-8 pt-6 text-center text-xs text-stone-500">
-      © Lakmi Handcrafts. All rights reserved. Powered by GitHub & Cloudflare Pages.
+      © Lakmi Handcrafts. All rights reserved.
     </div>
   </footer>
+
+  <!-- PapaParse CSV Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+
+  <!-- Google Sheet Sync Script -->
+  <script>
+    const sheetCSVUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRS_2AqaVJBFwkDzzBxCDxlhw_kSTwpHxrv4rR75xe0rEKy1QkvXOmlzasi3t_SNkqRjYNERwrxr-9b/pub?output=csv';
+
+    function loadProductsFromSheet() {
+      Papa.parse(sheetCSVUrl, {
+        download: true,
+        header: true,
+        skipEmptyLines: true,
+        complete: function(results) {
+          const products = results.data;
+          const container = document.getElementById('product-grid');
+          container.innerHTML = '';
+
+          if (!products || products.length === 0) {
+            container.innerHTML = `<p class="col-span-full text-center text-stone-500">No items found in catalog.</p>`;
+            return;
+          }
+
+          products.forEach(product => {
+            // Flexible header matching (case insensitive)
+            const getVal = (key) => {
+              const matchedKey = Object.keys(product).find(k => k.trim().toLowerCase() === key.toLowerCase());
+              return matchedKey ? product[matchedKey] : '';
+            };
+
+            const title = getVal('title');
+            if (!title) return; // Skip empty product entries
+
+            const price = getVal('price') || 'N/A';
+            const description = getVal('description') || '';
+            const stockVal = parseInt(getVal('stock')) || 0;
+            const imageUrl = getVal('image_url') || 'https://via.placeholder.com/300x300?text=Card+Photo';
+            const customWaText = getVal('whatsapp_text') || `Hi! I want to order ${title}`;
+
+            const isAvailable = stockVal > 0;
+
+            const stockBadge = isAvailable 
+              ? `<span class="text-xs font-bold text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded-full">${stockVal} Available</span>`
+              : `<span class="text-xs font-bold text-rose-800 bg-rose-100 px-2.5 py-0.5 rounded-full">Sold Out</span>`;
+
+            const waMessage = `${customWaText} (Rs. ${price})`;
+            const actionButton = isAvailable
+              ? `<a href="https://wa.me/94705334464?text=${encodeURIComponent(waMessage)}" target="_blank" class="bg-emerald-600 text-white px-3 py-2 rounded-xl text-xs font-semibold hover:bg-emerald-700 transition flex items-center gap-1">
+                  <i class="fa-brands fa-whatsapp"></i> Order
+                 </a>`
+              : `<a href="https://wa.me/94705334464?text=${encodeURIComponent("Hi! When will " + title + " be back in stock?")}" target="_blank" class="bg-stone-200 text-stone-600 px-3 py-2 rounded-xl text-xs font-semibold hover:bg-stone-300 transition flex items-center gap-1">
+                  Pre-Order
+                 </a>`;
+
+            const cardHTML = `
+              <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition border border-stone-200 flex flex-col justify-between">
+                <div>
+                  <div class="h-72 bg-stone-100 overflow-hidden">
+                    <img src="${imageUrl}" alt="${title}" class="w-full h-full object-cover hover:scale-105 transition duration-300" onerror="this.src='https://via.placeholder.com/300x300?text=Card+Photo'">
+                  </div>
+                  <div class="p-5 space-y-2">
+                    ${stockBadge}
+                    <h3 class="font-bold text-lg text-stone-900">${title}</h3>
+                    <p class="text-xs text-stone-500">${description}</p>
+                  </div>
+                </div>
+                <div class="p-5 pt-0 flex items-center justify-between border-t border-stone-100 mt-4">
+                  <span class="text-lg font-bold text-amber-900">Rs. ${price}</span>
+                  ${actionButton}
+                </div>
+              </div>
+            `;
+
+            container.innerHTML += cardHTML;
+          });
+        },
+        error: function(err) {
+          console.error("Error loading sheet:", err);
+          document.getElementById('product-grid').innerHTML = `<p class="col-span-full text-center text-rose-600">Failed to load items. Please check sheet configuration.</p>`;
+        }
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", loadProductsFromSheet);
+  </script>
 
 </body>
 </html>
