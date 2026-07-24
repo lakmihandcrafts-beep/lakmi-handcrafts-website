@@ -192,89 +192,150 @@
   </footer>
 
   <!-- PapaParse CSV Library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
 
-  <!-- Google Sheet Sync Script -->
-  <script>
-    const sheetCSVUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRS_2AqaVJBFwkDzzBxCDxlhw_kSTwpHxrv4rR75xe0rEKy1QkvXOmlzasi3t_SNkqRjYNERwrxr-9b/pub?output=csv';
+<!-- Google Sheet Sync Script with Category Filtering -->
+<script>
+  const sheetCSVUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRS_2AqaVJBFwkDzzBxCDxlhw_kSTwpHxrv4rR75xe0rEKy1QkvXOmlzasi3t_SNkqRjYNERwrxr-9b/pub?output=csv';
 
-    function loadProductsFromSheet() {
-      Papa.parse(sheetCSVUrl, {
-        download: true,
-        header: true,
-        skipEmptyLines: true,
-        complete: function(results) {
-          const products = results.data;
-          const container = document.getElementById('product-grid');
-          container.innerHTML = '';
+  let allProducts = [];
+  let currentCategory = 'All';
 
-          if (!products || products.length === 0) {
-            container.innerHTML = `<p class="col-span-full text-center text-stone-500">No items found in catalog.</p>`;
-            return;
-          }
+  function loadProductsFromSheet() {
+    Papa.parse(sheetCSVUrl, {
+      download: true,
+      header: true,
+      skipEmptyLines: true,
+      complete: function(results) {
+        allProducts = results.data;
+        buildCategoryButtons();
+        renderProducts();
+      },
+      error: function(err) {
+        console.error("Error loading sheet:", err);
+        document.getElementById('product-grid').innerHTML = `<p class="col-span-full text-center text-rose-600">Failed to load items. Please check sheet configuration.</p>`;
+      }
+    });
+  }
 
-          products.forEach(product => {
-            // Flexible header matching (case insensitive)
-            const getVal = (key) => {
-              const matchedKey = Object.keys(product).find(k => k.trim().toLowerCase() === key.toLowerCase());
-              return matchedKey ? product[matchedKey] : '';
-            };
+  // Helper function to safely get column values regardless of column casing
+  function getVal(product, key) {
+    const matchedKey = Object.keys(product).find(k => k.trim().toLowerCase() === key.toLowerCase());
+    return matchedKey ? product[matchedKey].trim() : '';
+  }
 
-            const title = getVal('title');
-            if (!title) return; // Skip empty product entries
+  // Build Filter Buttons Dynamically based on Google Sheet Categories
+  function buildCategoryButtons() {
+    const btnContainer = document.getElementById('category-buttons');
+    const categories = new Set();
 
-            const price = getVal('price') || 'N/A';
-            const description = getVal('description') || '';
-            const stockVal = parseInt(getVal('stock')) || 0;
-            const imageUrl = getVal('image_url') || 'https://via.placeholder.com/300x300?text=Card+Photo';
-            const customWaText = getVal('whatsapp_text') || `Hi! I want to order ${title}`;
+    allProducts.forEach(p => {
+      const cat = getVal(p, 'category');
+      if (cat) categories.add(cat);
+    });
 
-            const isAvailable = stockVal > 0;
+    // Reset buttons HTML
+    btnContainer.innerHTML = `
+      <button onclick="filterCategory('All')" id="btn-All" class="category-btn bg-amber-900 text-white px-5 py-2 rounded-full text-xs font-semibold shadow-sm transition">
+        All Items
+      </button>
+    `;
 
-            const stockBadge = isAvailable 
-              ? `<span class="text-xs font-bold text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded-full">${stockVal} Available</span>`
-              : `<span class="text-xs font-bold text-rose-800 bg-rose-100 px-2.5 py-0.5 rounded-full">Sold Out</span>`;
+    categories.forEach(cat => {
+      btnContainer.innerHTML += `
+        <button onclick="filterCategory('${cat}')" id="btn-${cat.replace(/\s+/g, '-')}" class="category-btn bg-stone-100 hover:bg-amber-100 text-stone-700 px-5 py-2 rounded-full text-xs font-semibold transition border border-stone-200">
+          ${cat}
+        </button>
+      `;
+    });
+  }
 
-            const waMessage = `${customWaText} (Rs. ${price})`;
-            const actionButton = isAvailable
-              ? `<a href="https://wa.me/94705334464?text=${encodeURIComponent(waMessage)}" target="_blank" class="bg-emerald-600 text-white px-3 py-2 rounded-xl text-xs font-semibold hover:bg-emerald-700 transition flex items-center gap-1">
-                  <i class="fa-brands fa-whatsapp"></i> Order
-                 </a>`
-              : `<a href="https://wa.me/94705334464?text=${encodeURIComponent("Hi! When will " + title + " be back in stock?")}" target="_blank" class="bg-stone-200 text-stone-600 px-3 py-2 rounded-xl text-xs font-semibold hover:bg-stone-300 transition flex items-center gap-1">
-                  Pre-Order
-                 </a>`;
+  // Filter Action
+  function filterCategory(category) {
+    currentCategory = category;
 
-            const cardHTML = `
-              <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition border border-stone-200 flex flex-col justify-between">
-                <div>
-                  <div class="h-72 bg-stone-100 overflow-hidden">
-                    <img src="${imageUrl}" alt="${title}" class="w-full h-full object-cover hover:scale-105 transition duration-300" onerror="this.src='https://via.placeholder.com/300x300?text=Card+Photo'">
-                  </div>
-                  <div class="p-5 space-y-2">
-                    ${stockBadge}
-                    <h3 class="font-bold text-lg text-stone-900">${title}</h3>
-                    <p class="text-xs text-stone-500">${description}</p>
-                  </div>
-                </div>
-                <div class="p-5 pt-0 flex items-center justify-between border-t border-stone-100 mt-4">
-                  <span class="text-lg font-bold text-amber-900">Rs. ${price}</span>
-                  ${actionButton}
-                </div>
-              </div>
-            `;
+    // Highlight active button
+    document.querySelectorAll('.category-btn').forEach(btn => {
+      btn.className = 'category-btn bg-stone-100 hover:bg-amber-100 text-stone-700 px-5 py-2 rounded-full text-xs font-semibold transition border border-stone-200';
+    });
 
-            container.innerHTML += cardHTML;
-          });
-        },
-        error: function(err) {
-          console.error("Error loading sheet:", err);
-          document.getElementById('product-grid').innerHTML = `<p class="col-span-full text-center text-rose-600">Failed to load items. Please check sheet configuration.</p>`;
-        }
-      });
+    const activeBtnId = category === 'All' ? 'btn-All' : `btn-${category.replace(/\s+/g, '-')}`;
+    const activeBtn = document.getElementById(activeBtnId);
+    if (activeBtn) {
+      activeBtn.className = 'category-btn bg-amber-900 text-white px-5 py-2 rounded-full text-xs font-semibold shadow-sm transition';
     }
 
-    document.addEventListener("DOMContentLoaded", loadProductsFromSheet);
-  </script>
+    renderProducts();
+  }
+
+  // Render Product Cards Grid
+  function renderProducts() {
+    const container = document.getElementById('product-grid');
+    container.innerHTML = '';
+
+    const filtered = currentCategory === 'All' 
+      ? allProducts 
+      : allProducts.filter(p => getVal(p, 'category').toLowerCase() === currentCategory.toLowerCase());
+
+    if (!filtered || filtered.length === 0) {
+      container.innerHTML = `<p class="col-span-full text-center text-stone-500 py-8">No products found in this category.</p>`;
+      return;
+    }
+
+    filtered.forEach(product => {
+      const title = getVal(product, 'title');
+      if (!title) return;
+
+      const price = getVal(product, 'price') || 'N/A';
+      const description = getVal(product, 'description') || '';
+      const stockVal = parseInt(getVal(product, 'stock')) || 0;
+      const category = getVal(product, 'category') || 'Craft';
+      const imageUrl = getVal(product, 'image_url') || 'https://via.placeholder.com/300x300?text=Card+Photo';
+      const customWaText = getVal(product, 'whatsapp_text') || `Hi! I want to order ${title}`;
+
+      const isAvailable = stockVal > 0;
+
+      const stockBadge = isAvailable 
+        ? `<span class="text-xs font-bold text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded-full">${stockVal} Available</span>`
+        : `<span class="text-xs font-bold text-rose-800 bg-rose-100 px-2.5 py-0.5 rounded-full">Sold Out</span>`;
+
+      const waMessage = `${customWaText} (Rs. ${price})`;
+      const actionButton = isAvailable
+        ? `<a href="https://wa.me/94705334464?text=${encodeURIComponent(waMessage)}" target="_blank" class="bg-emerald-600 text-white px-3 py-2 rounded-xl text-xs font-semibold hover:bg-emerald-700 transition flex items-center gap-1">
+            <i class="fa-brands fa-whatsapp"></i> Order
+           </a>`
+        : `<a href="https://wa.me/94705334464?text=${encodeURIComponent("Hi! When will " + title + " be back in stock?")}" target="_blank" class="bg-stone-200 text-stone-600 px-3 py-2 rounded-xl text-xs font-semibold hover:bg-stone-300 transition flex items-center gap-1">
+            Pre-Order
+           </a>`;
+
+      const cardHTML = `
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition border border-stone-200 flex flex-col justify-between">
+          <div>
+            <div class="h-72 bg-stone-100 overflow-hidden relative">
+              <img src="${imageUrl}" alt="${title}" class="w-full h-full object-cover hover:scale-105 transition duration-300" onerror="this.src='https://via.placeholder.com/300x300?text=Card+Photo'">
+              <span class="absolute top-3 right-3 bg-white/90 backdrop-blur-md text-stone-800 text-[10px] font-bold px-2.5 py-1 rounded-full shadow-sm border border-stone-200">
+                ${category}
+              </span>
+            </div>
+            <div class="p-5 space-y-2">
+              ${stockBadge}
+              <h3 class="font-bold text-lg text-stone-900">${title}</h3>
+              <p class="text-xs text-stone-500">${description}</p>
+            </div>
+          </div>
+          <div class="p-5 pt-0 flex items-center justify-between border-t border-stone-100 mt-4">
+            <span class="text-lg font-bold text-amber-900">Rs. ${price}</span>
+            ${actionButton}
+          </div>
+        </div>
+      `;
+
+      container.innerHTML += cardHTML;
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", loadProductsFromSheet);
+</script>
 
 </body>
 </html>
