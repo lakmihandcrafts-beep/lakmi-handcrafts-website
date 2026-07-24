@@ -3,106 +3,263 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lakmi Handcrafts | Unique Handmade Art & Gifts</title>
+  <title>Lakmi Handcrafts | Unique Handmade Art & Cards from Sri Lanka</title>
+  <link rel="icon" type="image/png" href="logo.png" />
+  
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
-    h1, h2, .font-serif { font-family: 'Playfair Display', serif; }
+    h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #faf8f5; }
   </style>
 </head>
 <body class="text-stone-800">
 
-<!-- Navigation Bar with Logo -->
-<nav class="flex items-center justify-between px-6 py-4 bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-stone-200">
-  
-  <a href="#" class="flex items-center gap-3">
-    <!-- Your Business Logo -->
-    <img src="logo.png" alt="Lakmi Handcrafts Logo" class="h-10 w-auto object-contain" />
-    <span class="text-2xl font-serif font-bold text-amber-900 hidden sm:inline">Lakmi Handcrafts</span>
-  </a>
-
-  <a href="https://wa.me/YOUR_PHONE_NUMBER" target="_blank" class="bg-amber-800 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-amber-900 transition">
-    Chat on WhatsApp
-  </a>
-
-</nav>
-
-  <!-- Hero Section -->
-  <header class="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-    <div class="space-y-6">
-      <span class="uppercase tracking-widest text-xs font-bold text-amber-800 bg-amber-100 px-3 py-1 rounded-full">100% Handcrafted with Love</span>
-      <h1 class="text-4xl md:text-5xl font-bold leading-tight text-stone-900">
-        Authentic Handcrafted Treasures for Your Home & Loved Ones
-      </h1>
-      <p class="text-stone-600 text-lg">
-        Carefully made by hand using traditional techniques and sustainable materials. Unique pieces designed to bring warmth to every corner.
-      </p>
-      <div class="flex gap-4">
-        <a href="#products" class="bg-amber-800 text-white px-6 py-3 rounded-xl font-semibold hover:bg-amber-900 transition">
-          View Products
-        </a>
-        <a href="https://wa.me/YOUR_PHONE_NUMBER?text=Hi%20Lakmi%20Handcrafts,%20I'd%20like%20to%20inquire%20about%20custom%20orders!" target="_blank" class="border border-stone-300 px-6 py-3 rounded-xl font-semibold hover:bg-stone-100 transition">
-          Custom Order
-        </a>
+  <!-- Top Announcement Bar -->
+  <div class="bg-amber-900 text-amber-50 text-xs py-2 px-4 text-center flex justify-between items-center max-w-full overflow-hidden">
+    <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center w-full gap-2">
+      <span><i class="fa-solid fa-truck-fast mr-1"></i> Delivery: Sri Lanka (Rs. 450) & International Shipping Available</span>
+      <div class="flex items-center gap-4">
+        <a href="tel:+94705334464" class="hover:underline"><i class="fa-solid fa-phone mr-1"></i> 070 533 4464</a>
+        <a href="mailto:lakmihandcrafts@gmail.com" class="hover:underline hidden sm:inline"><i class="fa-solid fa-envelope mr-1"></i> lakmihandcrafts@gmail.com</a>
       </div>
     </div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="flex items-center justify-between px-6 py-3 bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-stone-200 shadow-sm">
+    <a href="#" class="flex items-center gap-3">
+      <img src="logo.png" alt="Lakmi Handcrafts Logo" class="h-10 w-auto object-contain" onerror="this.style.display='none'" />
+      <span class="text-xl sm:text-2xl font-serif font-bold text-amber-950">Lakmi Handcrafts</span>
+    </a>
+
+    <!-- Social Links & WhatsApp -->
+    <div class="flex items-center gap-3 sm:gap-5">
+      <div class="hidden md:flex items-center gap-3 text-stone-600 text-lg">
+        <a href="https://web.facebook.com/profile.php?id=61586788028505" target="_blank" class="hover:text-blue-600 transition" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://www.instagram.com/lakmihandcraft/" target="_blank" class="hover:text-pink-600 transition" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.youtube.com/channel/UCBOa7i7JikC340IuWYx44KQ" target="_blank" class="hover:text-red-600 transition" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+      <a href="https://wa.me/94705334464?text=Hi%20Lakmi%20Handcrafts!%20I'd%20like%20to%20inquire%20about%20your%20products." target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition flex items-center gap-2 shadow-sm">
+        <i class="fa-brands fa-whatsapp text-base"></i> Chat on WhatsApp
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="max-w-6xl mx-auto px-6 py-12 md:py-16 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+    <div class="space-y-6">
+      <span class="inline-block uppercase tracking-widest text-xs font-bold text-amber-900 bg-amber-100 px-3.5 py-1 rounded-full border border-amber-200">
+        100% Handcrafted in Sri Lanka
+      </span>
+      <h1 class="text-4xl md:text-5xl font-bold leading-tight text-stone-900">
+        Authentic Handcrafted Greeting Cards & Artisan Gifts
+      </h1>
+      <p class="text-stone-600 text-base sm:text-lg leading-relaxed">
+        Carefully made by hand featuring traditional Sri Lankan art motifs, 3D layered craftwork, and luxury gift presentations.
+      </p>
+      
+      <div class="flex flex-wrap gap-4 pt-2">
+        <a href="#products" class="bg-amber-900 text-white px-6 py-3 rounded-xl font-semibold hover:bg-amber-950 transition shadow-sm">
+          Browse Products
+        </a>
+        <a href="https://wa.me/94705334464?text=Hi!%20I%20want%20to%20place%20a%20custom%20order." target="_blank" class="border border-stone-300 text-stone-800 px-6 py-3 rounded-xl font-semibold hover:bg-stone-100 transition">
+          Request Custom Order
+        </a>
+      </div>
+
+      <!-- Quick Trust Indicators -->
+      <div class="grid grid-cols-2 gap-4 pt-4 border-t border-stone-200 text-xs text-stone-600">
+        <div><i class="fa-solid fa-truck text-amber-800 mr-1.5"></i> Islandwide Delivery (Rs. 450)</div>
+        <div><i class="fa-solid fa-globe text-amber-800 mr-1.5"></i> Worldwide Express Shipping</div>
+      </div>
+    </div>
+
+    <!-- Featured Hero Showcase Image -->
     <div class="relative">
-      <div class="w-full h-80 md:h-[400px] bg-amber-200/50 rounded-2xl overflow-hidden shadow-lg border border-amber-900/10 flex items-center justify-center text-amber-900 font-serif">
-        <!-- Replace this with an actual photo of your featured product -->
-        <p class="p-6 text-center italic">[ Place your main high-resolution craft photo here ]</p>
+      <div class="w-full h-80 sm:h-[420px] bg-amber-100/60 rounded-3xl overflow-hidden shadow-md border border-stone-200 relative">
+        <img src="card-peacock-box.jpg" alt="Lakmi Handcrafts Featured Product" class="w-full h-full object-cover">
+        <div class="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-md p-4 rounded-2xl border border-stone-200 shadow-sm">
+          <p class="text-xs font-bold text-amber-900">Featured Creation</p>
+          <p class="text-sm font-semibold text-stone-800">Peacock Card & Premium Presentation Box Set</p>
+        </div>
       </div>
     </div>
   </header>
 
+  <!-- Sentiment Quote Section -->
+  <section class="max-w-4xl mx-auto my-8 mx-6 sm:mx-auto p-8 bg-amber-50/80 rounded-3xl border border-amber-200/70 text-center space-y-4 shadow-sm">
+    <p class="text-xs uppercase tracking-widest text-amber-900 font-bold">A Message In Every Card</p>
+    <blockquote class="text-lg md:text-2xl font-serif text-stone-800 italic leading-relaxed">
+      “This little handmade creation carries warm wishes from the heart. May it remind you that kindness, love, and friendship always travel farther than distance.”
+    </blockquote>
+    <p class="text-xs font-bold tracking-widest text-amber-900 uppercase">AYUBOWAN!</p>
+  </section>
+
   <!-- Product Showcase Section -->
   <section id="products" class="max-w-6xl mx-auto px-6 py-12">
     <div class="text-center space-y-2 mb-12">
-      <h2 class="text-3xl font-bold text-stone-900">Our Craft Collection</h2>
-      <p class="text-stone-600">Select any item to order directly via WhatsApp.</p>
+      <h2 class="text-3xl sm:text-4xl font-bold text-stone-900">Our Handcrafted Cards</h2>
+      <p class="text-stone-600">Click any item to order directly via WhatsApp.</p>
     </div>
 
     <!-- Product Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-      
-      <!-- Card 1 -->
-      <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition border border-stone-100">
-        <div class="h-56 bg-stone-100 flex items-center justify-center text-stone-400">
-          [ Product Photo ]
-        </div>
-        <div class="p-5 space-y-3">
-          <h3 class="font-bold text-lg text-stone-900">Handwoven Decor Piece</h3>
-          <p class="text-sm text-stone-500">Made from eco-friendly fibers.</p>
-          <div class="flex items-center justify-between pt-2">
-            <span class="text-lg font-bold text-amber-900">Rs. 2,500</span>
-            <a href="https://wa.me/YOUR_PHONE_NUMBER?text=Hi!%20I%20want%20to%20order%20the%20Handwoven%20Decor%20Piece" target="_blank" class="bg-emerald-600 text-white px-3 py-1.5 rounded-lg text-xs font-semibold hover:bg-emerald-700 transition flex items-center gap-1">
-              Order via WhatsApp
-            </a>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+      <!-- Card 1: Raksha Mask -->
+      <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition border border-stone-200 flex flex-col justify-between">
+        <div>
+          <div class="h-72 bg-stone-100 overflow-hidden">
+            <img src="card-raksha.jpg" alt="Traditional Sri Lankan Raksha Mask Greeting Card" class="w-full h-full object-cover hover:scale-105 transition duration-300">
           </div>
+          <div class="p-5 space-y-2">
+            <span class="text-xs font-bold text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded-full">Made with Love</span>
+            <h3 class="font-bold text-lg text-stone-900">Raksha Mask Cultural Card</h3>
+            <p class="text-xs text-stone-500">3D layered intricate traditional mask design on textured background.</p>
+          </div>
+        </div>
+        <div class="p-5 pt-0 flex items-center justify-between border-t border-stone-100 mt-4">
+          <span class="text-lg font-bold text-amber-900">Rs. 1,200</span>
+          <a href="https://wa.me/94705334464?text=Hi!%20I'd%20like%20to%20order%20the%20Raksha%20Mask%20Cultural%20Card%20(Rs.%201200)" target="_blank" class="bg-emerald-600 text-white px-3 py-2 rounded-xl text-xs font-semibold hover:bg-emerald-700 transition flex items-center gap-1">
+            <i class="fa-brands fa-whatsapp"></i> Order
+          </a>
         </div>
       </div>
 
-      <!-- Card 2 -->
-      <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition border border-stone-100">
-        <div class="h-56 bg-stone-100 flex items-center justify-center text-stone-400">
-          [ Product Photo ]
-        </div>
-        <div class="p-5 space-y-3">
-          <h3 class="font-bold text-lg text-stone-900">Artisan Gift Set</h3>
-          <p class="text-sm text-stone-500">Customized handmade gift set.</p>
-          <div class="flex items-center justify-between pt-2">
-            <span class="text-lg font-bold text-amber-900">Rs. 3,800</span>
-            <a href="https://wa.me/YOUR_PHONE_NUMBER?text=Hi!%20I%20want%20to%20order%20the%20Artisan%20Gift%20Set" target="_blank" class="bg-emerald-600 text-white px-3 py-1.5 rounded-lg text-xs font-semibold hover:bg-emerald-700 transition flex items-center gap-1">
-              Order via WhatsApp
-            </a>
+      <!-- Card 2: Lighthouse -->
+      <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition border border-stone-200 flex flex-col justify-between">
+        <div>
+          <div class="h-72 bg-stone-100 overflow-hidden">
+            <img src="card-lighthouse.jpg" alt="Island Wishes Lighthouse Card" class="w-full h-full object-cover hover:scale-105 transition duration-300">
           </div>
+          <div class="p-5 space-y-2">
+            <span class="text-xs font-bold text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded-full">Island Wishes</span>
+            <h3 class="font-bold text-lg text-stone-900">Island Lighthouse Card</h3>
+            <p class="text-xs text-stone-500">Delicate lace cutout with tropical sunset background and gem accents.</p>
+          </div>
+        </div>
+        <div class="p-5 pt-0 flex items-center justify-between border-t border-stone-100 mt-4">
+          <span class="text-lg font-bold text-amber-900">Rs. 1,200</span>
+          <a href="https://wa.me/94705334464?text=Hi!%20I'd%20like%20to%20order%20the%20Island%20Lighthouse%20Card%20(Rs.%201200)" target="_blank" class="bg-emerald-600 text-white px-3 py-2 rounded-xl text-xs font-semibold hover:bg-emerald-700 transition flex items-center gap-1">
+            <i class="fa-brands fa-whatsapp"></i> Order
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 3: Kandyan Dancer -->
+      <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition border border-stone-200 flex flex-col justify-between">
+        <div>
+          <div class="h-72 bg-stone-100 overflow-hidden">
+            <img src="card-dancer.jpg" alt="Traditional Sri Lankan Dancer Greeting Card" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+          </div>
+          <div class="p-5 space-y-2">
+            <span class="text-xs font-bold text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded-full">Cultural Art</span>
+            <h3 class="font-bold text-lg text-stone-900">Kandyan Dancer Cultural Card</h3>
+            <p class="text-xs text-stone-500">Vibrant dancer art with intricate lace lattice borders and stone textures.</p>
+          </div>
+        </div>
+        <div class="p-5 pt-0 flex items-center justify-between border-t border-stone-100 mt-4">
+          <span class="text-lg font-bold text-amber-900">Rs. 1,200</span>
+          <a href="https://wa.me/94705334464?text=Hi!%20I'd%20like%20to%20order%20the%20Kandyan%20Dancer%20Cultural%20Card%20(Rs.%201200)" target="_blank" class="bg-emerald-600 text-white px-3 py-2 rounded-xl text-xs font-semibold hover:bg-emerald-700 transition flex items-center gap-1">
+            <i class="fa-brands fa-whatsapp"></i> Order
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 4: Peacock Box Set -->
+      <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition border border-stone-200 flex flex-col justify-between">
+        <div>
+          <div class="h-72 bg-stone-100 overflow-hidden">
+            <img src="card-peacock-box.jpg" alt="Luxury Peacock Boxed Greeting Card" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+          </div>
+          <div class="p-5 space-y-2">
+            <span class="text-xs font-bold text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded-full">Luxury Gift Box Set</span>
+            <h3 class="font-bold text-lg text-stone-900">Peacock Card & Presentation Box</h3>
+            <p class="text-xs text-stone-500">Includes handcrafted 3D peacock card, paper flowers, ribbon, and Ayubowan gift tag.</p>
+          </div>
+        </div>
+        <div class="p-5 pt-0 flex items-center justify-between border-t border-stone-100 mt-4">
+          <span class="text-lg font-bold text-amber-900">Rs. 2,500</span>
+          <a href="https://wa.me/94705334464?text=Hi!%20I'd%20like%20to%20order%20the%20Peacock%20Card%20%26%20Presentation%20Box%20(Rs.%202500)" target="_blank" class="bg-emerald-600 text-white px-3 py-2 rounded-xl text-xs font-semibold hover:bg-emerald-700 transition flex items-center gap-1">
+            <i class="fa-brands fa-whatsapp"></i> Order
+          </a>
         </div>
       </div>
 
     </div>
   </section>
+
+  <!-- Shipping & Delivery Information Banner -->
+  <section class="max-w-6xl mx-auto px-6 py-8">
+    <div class="bg-stone-900 text-white rounded-3xl p-8 md:p-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center shadow-lg">
+      <div class="space-y-3">
+        <span class="text-amber-400 text-xs font-bold uppercase tracking-widest">Delivery Details</span>
+        <h3 class="text-2xl font-serif font-bold">We Deliver Locally & Worldwide</h3>
+        <p class="text-stone-300 text-sm leading-relaxed">
+          Every card is safely packaged to ensure it arrives in pristine condition at your doorstep or directly to your loved one.
+        </p>
+      </div>
+      <div class="space-y-4 bg-stone-800 p-6 rounded-2xl border border-stone-700">
+        <div class="flex items-center justify-between border-b border-stone-700 pb-3">
+          <span class="text-sm font-semibold"><i class="fa-solid fa-flag text-amber-400 mr-2"></i> Sri Lanka Delivery:</span>
+          <span class="text-amber-300 font-bold">Rs. 450</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-sm font-semibold"><i class="fa-solid fa-plane text-amber-400 mr-2"></i> International Shipping:</span>
+          <span class="text-stone-300 text-xs">Varies by country</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer / Contact Info -->
+  <footer class="bg-stone-900 text-stone-300 border-t border-stone-800 mt-16 py-12 px-6">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- Brand & About -->
+      <div class="space-y-3">
+        <h4 class="text-xl font-serif font-bold text-white">Lakmi Handcrafts</h4>
+        <p class="text-xs text-stone-400 leading-relaxed">
+          Bringing warm Sri Lankan artistic traditions, love, and handcrafted beauty to greeting cards and gifts worldwide.
+        </p>
+        <div class="flex items-center gap-4 text-lg pt-2">
+          <a href="https://web.facebook.com/profile.php?id=61586788028505" target="_blank" class="hover:text-amber-400 transition"><i class="fa-brands fa-facebook"></i></a>
+          <a href="https://www.instagram.com/lakmihandcraft/" target="_blank" class="hover:text-amber-400 transition"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.youtube.com/channel/UCBOa7i7JikC340IuWYx44KQ" target="_blank" class="hover:text-amber-400 transition"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="space-y-3 text-xs">
+        <h4 class="text-sm font-bold text-white uppercase tracking-wider">Contact Us</h4>
+        <p><i class="fa-solid fa-location-dot text-amber-400 mr-2"></i> 132/1 Neluwakanda Alwatta, Matale, Sri Lanka</p>
+        <p><i class="fa-solid fa-phone text-amber-400 mr-2"></i> 070 533 4464</p>
+        <p><i class="fa-brands fa-whatsapp text-amber-400 mr-2"></i> +94 70 533 4464</p>
+        <p><i class="fa-solid fa-envelope text-amber-400 mr-2"></i> lakmihandcrafts@gmail.com</p>
+      </div>
+
+      <!-- Quick Order -->
+      <div class="space-y-3">
+        <h4 class="text-sm font-bold text-white uppercase tracking-wider">Quick Order</h4>
+        <p class="text-xs text-stone-400">Need custom modifications or personalized messages in your cards?</p>
+        <a href="https://wa.me/94705334464?text=Hi!%20I'd%20like%20to%20place%20an%20order." target="_blank" class="inline-block bg-emerald-600 hover:bg-emerald-700 text-white text-xs px-4 py-2.5 rounded-xl font-semibold transition">
+          <i class="fa-brands fa-whatsapp mr-1"></i> Send Us a Message
+        </a>
+      </div>
+
+    </div>
+
+    <div class="max-w-6xl mx-auto border-t border-stone-800 mt-8 pt-6 text-center text-xs text-stone-500">
+      © Lakmi Handcrafts. All rights reserved. Powered by GitHub & Cloudflare Pages.
+    </div>
+  </footer>
 
 </body>
 </html>
