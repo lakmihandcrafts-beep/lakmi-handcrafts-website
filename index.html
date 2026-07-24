@@ -103,21 +103,28 @@
     <p class="text-xs font-bold tracking-widest text-amber-900 uppercase">AYUBOWAN!</p>
   </section>
 
-  <!-- Dynamic Product Showcase Section (Loaded via Google Sheet) -->
-  <section id="products" class="max-w-6xl mx-auto px-6 py-12">
-    <div class="text-center space-y-2 mb-12">
-      <h2 class="text-3xl sm:text-4xl font-bold text-stone-900 font-serif">Our Handcrafted Collection</h2>
-      <p class="text-stone-600">Real-time catalog from our studio. Click any item to order directly via WhatsApp.</p>
-    </div>
+<!-- Dynamic Product Showcase Section -->
+<section id="products" class="max-w-6xl mx-auto px-6 py-12">
+  <div class="text-center space-y-2 mb-8">
+    <h2 class="text-3xl sm:text-4xl font-bold text-stone-900 font-serif">Our Handcrafted Collection</h2>
+    <p class="text-stone-600">Select a category below to filter our creations.</p>
+  </div>
 
-    <!-- Product Grid Container -->
-    <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-      <div class="col-span-full text-center text-stone-500 py-12">
-        <i class="fa-solid fa-spinner fa-spin text-2xl text-amber-800 mb-2"></i>
-        <p>Loading catalog from Google Sheet...</p>
-      </div>
+  <!-- Category Filter Buttons Container (Populated automatically) -->
+  <div id="category-buttons" class="flex flex-wrap justify-center gap-2 mb-10">
+    <button onclick="filterCategory('All')" class="category-btn bg-amber-900 text-white px-5 py-2 rounded-full text-xs font-semibold shadow-sm transition">
+      All Items
+    </button>
+  </div>
+
+  <!-- Product Grid Container -->
+  <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div class="col-span-full text-center text-stone-500 py-12">
+      <i class="fa-solid fa-spinner fa-spin text-2xl text-amber-800 mb-2"></i>
+      <p>Loading catalog...</p>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- Shipping & Delivery Information Banner -->
   <section class="max-w-6xl mx-auto px-6 py-8">
