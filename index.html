@@ -28,7 +28,7 @@
       <span><i class="fa-solid fa-truck-fast mr-1"></i> Delivery: Sri Lanka (Rs. 450) & International Shipping Available</span>
       <div class="flex items-center gap-4">
         <a href="tel:+94705334464" class="hover:underline"><i class="fa-solid fa-phone mr-1"></i> 070 533 4464</a>
-        <a href="mailto:lakmihandcrafts@gmail.com" class="hover:underline hidden sm:inline"><i class="fa-solid fa-envelope mr-1"></i> lakmihandcrafts@gmail.com</a>
+        <a href="mailto:info@lakmihandcrafts.com" class="hover:underline hidden sm:inline"><i class="fa-solid fa-envelope mr-1"></i> info@lakmihandcrafts.com</a>
       </div>
     </div>
   </div>
@@ -46,6 +46,7 @@
         <a href="https://web.facebook.com/profile.php?id=61586788028505" target="_blank" class="hover:text-blue-600 transition" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
         <a href="https://www.instagram.com/lakmihandcraft/" target="_blank" class="hover:text-pink-600 transition" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
         <a href="https://www.youtube.com/channel/UCBOa7i7JikC340IuWYx44KQ" target="_blank" class="hover:text-red-600 transition" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://www.tiktok.com/@lakmihandcrafts" target="_blank" class="hover:text-stone-950 transition" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
       </div>
       <a href="https://wa.me/94705334464?text=Hi%20Lakmi%20Handcrafts!%20I'd%20like%20to%20inquire%20about%20your%20products." target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition flex items-center gap-2 shadow-sm">
         <i class="fa-brands fa-whatsapp text-base"></i> Chat on WhatsApp
@@ -163,6 +164,7 @@
           <a href="https://web.facebook.com/profile.php?id=61586788028505" target="_blank" class="hover:text-amber-400 transition"><i class="fa-brands fa-facebook"></i></a>
           <a href="https://www.instagram.com/lakmihandcraft/" target="_blank" class="hover:text-amber-400 transition"><i class="fa-brands fa-instagram"></i></a>
           <a href="https://www.youtube.com/channel/UCBOa7i7JikC340IuWYx44KQ" target="_blank" class="hover:text-amber-400 transition"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://www.tiktok.com/@lakmihandcrafts" target="_blank" class="hover:text-amber-400 transition"><i class="fa-brands fa-tiktok"></i></a>
         </div>
       </div>
 
@@ -172,7 +174,7 @@
         <p><i class="fa-solid fa-location-dot text-amber-400 mr-2"></i> 132/1 Neluwakanda Alwatta, Matale, Sri Lanka</p>
         <p><i class="fa-solid fa-phone text-amber-400 mr-2"></i> 070 533 4464</p>
         <p><i class="fa-brands fa-whatsapp text-amber-400 mr-2"></i> +94 70 533 4464</p>
-        <p><i class="fa-solid fa-envelope text-amber-400 mr-2"></i> lakmihandcrafts@gmail.com</p>
+        <p><i class="fa-solid fa-envelope text-amber-400 mr-2"></i> info@lakmihandcrafts.com</p>
       </div>
 
       <!-- Quick Order -->
@@ -200,6 +202,25 @@
 
   let allProducts = [];
   let currentCategory = 'All';
+  let visitorCountry = 'LK'; // Default to Sri Lanka (LKR) until/unless detection says otherwise
+
+  // Detect visitor's country (free, no API key) so we can show USD to overseas visitors
+  function detectVisitorCountry() {
+    fetch('https://ipwho.is/')
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.country_code) {
+          visitorCountry = data.country_code;
+        }
+      })
+      .catch(() => {
+        // If detection fails for any reason, quietly keep showing LKR (safe default)
+        visitorCountry = 'LK';
+      })
+      .finally(() => {
+        if (allProducts.length) renderProducts();
+      });
+  }
 
   function loadProductsFromSheet() {
     Papa.parse(sheetCSVUrl, {
@@ -287,6 +308,9 @@
       if (!title) return;
 
       const price = getVal(product, 'price') || 'N/A';
+      const priceUsd = getVal(product, 'price_usd') || '';
+      const showUsd = visitorCountry !== 'LK' && priceUsd;
+      const priceLabel = showUsd ? `$${priceUsd}` : `Rs. ${price}`;
       const description = getVal(product, 'description') || '';
       const stockVal = parseInt(getVal(product, 'stock')) || 0;
       const category = getVal(product, 'category') || 'Craft';
@@ -324,7 +348,7 @@
             </div>
           </div>
           <div class="p-5 pt-0 flex items-center justify-between border-t border-stone-100 mt-4">
-            <span class="text-lg font-bold text-amber-900">Rs. ${price}</span>
+            <span class="text-lg font-bold text-amber-900">${priceLabel}</span>
             ${actionButton}
           </div>
         </div>
@@ -334,9 +358,13 @@
     });
   }
 
-  document.addEventListener("DOMContentLoaded", loadProductsFromSheet);
+  document.addEventListener("DOMContentLoaded", function() {
+    loadProductsFromSheet();
+    detectVisitorCountry();
+  });
 </script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "9b63cbbafa224f9aa9f2e277c5debb45"}'></script><!-- End Cloudflare Web Analytics -->
   
 </body>
 </html>
+
